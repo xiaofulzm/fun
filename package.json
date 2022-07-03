@@ -2,10 +2,26 @@
   "name": "fun",
   "private": true,
   "version": "0.0.0",
+  "husky": {
+    "pre-commit": "npm run lint"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,tsx,ts}": [
+      "npm run lint:script",
+      "git add ."
+    ],
+    "**/*.{scss}": [
+      "npm run lint:style",
+      "git add ."
+    ]
+  },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --port 3333 --open",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "npm run lint:script && npm run lint:style",
+    "lint:style": "stylelint --fix \"src/**/*.{css,scss}\"",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "nprogress": "^0.2.0",
@@ -14,11 +30,20 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@amatlash/vite-plugin-stylelint": "^1.2.0",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@types/node": "^18.0.0",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^2.3.3",
+    "autoprefixer": "^10.4.7",
+    "commitlint": "^17.0.3",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "sass": "^1.53.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
+    "vite-plugin-eslint": "^1.6.1",
     "vue-tsc": "^0.34.7"
   }
 }
