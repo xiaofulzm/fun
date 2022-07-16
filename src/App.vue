@@ -1,13 +1,13 @@
+
 <script setup lang="ts">
 
 </script>
-
 <template>
-    <div>
-        <router-view/>
-    </div>
+  <div>
+    asdjnskn
+    <router-view />
+  </div>
 </template>
 
 <style>
-
 </style>

@@ -9,18 +9,15 @@
     "**/*.{js,jsx,tsx,ts}": [
       "npm run lint:script",
       "git add ."
-    ],
-    "**/*.{scss}": [
-      "npm run lint:style",
-      "git add ."
     ]
+   
   },
   "scripts": {
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --port 3333 --host 0.0.0.0 --open ",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "npm run lint:script && npm run lint:style",
-    "lint:style": "stylelint --fix \"src/**/*.{css,scss}\"",
+    "lint": "npm run lint:script",
+    "lint:script": "eslint src/**/*.{js,jsx,vue,ts,tsx} --fix",
     "postinstall": "husky install"
   },
   "dependencies": {
@@ -35,12 +32,21 @@
     "@commitlint/config-conventional": "^17.0.3",
     "@types/node": "^18.0.0",
     "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.4.7",
     "commitlint": "^17.0.3",
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.2.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "sass": "^1.53.0",
+    "stylelint-config-standard": "^26.0.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
     "vite-plugin-eslint": "^1.6.1",

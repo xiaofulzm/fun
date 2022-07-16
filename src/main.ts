@@ -1,13 +1,13 @@
 import { createApp } from 'vue'
-import store from './stores';
-import router from './routes';
+import store from './stores'
+import router from './routes'
 import App from './App.vue'
 
-import '@/assets/css/reset.scss';
+import '@/assets/css/reset.scss'
+// @import './styles/mixins.scss';
 
-const  app  = createApp(App);
+const app = createApp(App)
 
-
-app.use(store);
-app.use(router);
-app.mount('#app');
+app.use(store)
+app.use(router)
+app.mount('#app')
