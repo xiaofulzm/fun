@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-strongly-recommended',
-    'standard'
+    'standard',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -17,6 +17,15 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'vue/multi-word-component-names': 0  // 屏蔽驼峰命名
+    "vue/html-self-closing": ["error", {
+        "html": {
+        "void": "any",
+        "normal": "any",
+        "component": "any"
+        }
+    }],
+    "skipBlankLines": 0,
+    "ignoreComments": 0,
+    'vue/multi-word-component-names': 0 // 屏蔽驼峰命名
   }
 }

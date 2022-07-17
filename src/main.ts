@@ -3,8 +3,7 @@ import store from './stores'
 import router from './routes'
 import App from './App.vue'
 
-import '@/assets/css/reset.scss'
-// @import './styles/mixins.scss';
+import '@/assets/css/index.scss'
 
 const app = createApp(App)
 

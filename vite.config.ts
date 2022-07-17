@@ -1,12 +1,11 @@
 
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import autoprefixer from 'autoprefixer'
+import viteStylelint from '@amatlash/vite-plugin-stylelint'
+import svgLoader from 'vite-svg-loader'
 
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-
-import autoprefixer from 'autoprefixer';
-import viteStylelint from '@amatlash/vite-plugin-stylelint';
-
-import path from "path";
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,24 +13,23 @@ export default defineConfig({
     vue(),
     viteStylelint({
       exclude: /windicss|node_modules|/
-    })
-    
+    }),
+    svgLoader()
   ],
-  resolve:{
+  resolve: {
     // 设置路径别名
-        alias:{
-            '~':path.resolve(__dirname,'src/view'),  // 页面路由
-            "@":path.resolve(__dirname,"src"),  // 全局
-        }
+    alias: {
+      '~': path.resolve(__dirname, 'src/view'), // 页面路由
+      '@': path.resolve(__dirname, 'src')// 全局
+    }
   },
-  server:{
-   
-    open:true,
-    hmr:{
-        // host:'127.0.0.1',
-        // port:8080
-        overlay:false
-    },
+  server: {
+    open: true,
+    hmr: {
+    // host:'127.0.0.1',
+    // port:8080
+      overlay: false
+    }
     // 设置 https 代理
     //   proxy:{
     //       '/api':{
@@ -51,6 +49,5 @@ export default defineConfig({
         })
       ]
     }
-  
   }
 })
