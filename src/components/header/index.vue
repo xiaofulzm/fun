@@ -55,11 +55,19 @@ const handlePattern = () => {
                 width: 28px;
                 height: 28px;
                 cursor: pointer;
+                &:hover {
+                    transform: rotate(-1turn);
+                    transition: all 0.5s cubic-bezier(.34,0,.84,1);
+                }
             }
             .sun{
                 width: 46px;
                 height: 46px;
                 cursor: pointer;
+                 &:hover {
+                    transform: rotate(-1turn);
+                    transition: all 0.5s cubic-bezier(.34,0,.84,1);
+                }
             }
         }
     }
