@@ -1,7 +1,15 @@
-
 <script setup lang="ts">
 import Header from '@/components/header/index.vue'
+import Timer from '@/components/timer/index.vue'
 
+import {
+  isDarkly,
+  darklyFn
+} from '@/utils'
+
+setTimeout(() => {
+  darklyFn()
+}, 1000)
 </script>
 
 <template>
@@ -9,11 +17,17 @@ import Header from '@/components/header/index.vue'
   <!-- <router-link to="/login"> -->
   <!-- login页面 -->
   <div class="index">
-    <h1 class="h1">
+    <!-- <h1 class="h1">
       尽情期待
-    </h1>
+    </h1> -->
+    <div class="timer-wrap">
+      <Timer></Timer>
+    </div>
     <!-- </router-link> -->
-    <div class="shade"></div>
+    <div
+      class="shade"
+      :class="!isDarkly?'shade-moon':'shade-sun'"
+    ></div>
   </div>
 </template>
 
@@ -23,30 +37,33 @@ import Header from '@/components/header/index.vue'
         align-items: center;
         justify-content: center;
         height:calc(100vh - 80px);
-        .h1{
-            color: var(--fu-text-color);
+        .timer-wrap{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
         }
         .shade{
             position:fixed;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             z-index: -1;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--fu-bg-color);
-            // background-color: red;
-            animation: shadeSun ease-in 0.7s;
+            width: 500px;
+            height: 500px;
+            // background-color: #242424;
+            border-radius: 50%;
+            transform: translateX(-250px) translateY(-250px) scale(5);
+            transition: transform 1s;
         }
-    }
-    @keyframes shadeSun{
-        0%{
-            width: 0;
-            height: 0;
+         .shade-moon{
+            background-color: #242424;
+            transform: translateX(-250px) translateY(-250px) scale(0);
         }
-        100%{
-            width: 100vw;
-            height: 100vh;
-        }
-    }
+         .shade-sun{
+            background-color: #fff;
+            transform: translateX(-250px) translateY(-250px) scale(0);
 
+        }
+    }
 </style>

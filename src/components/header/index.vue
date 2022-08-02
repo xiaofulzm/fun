@@ -1,15 +1,17 @@
-
 <script setup lang="ts">
 import Logo from '@/assets/svg/logo.svg'
 import Moon from '@/assets/svg/moon.svg'
 import Sun from '@/assets/svg/sun.svg'
-import { ref } from 'vue'
 
-const pattern = ref(true)
-console.log(document.body.classList.contains)
+import {
+  isDarkly,
+  darklyFn
+} from '@/utils/darkly'
+
+// console.log(document.body.classList.contains)
 
 const handlePattern = () => {
-  pattern.value = !pattern.value
+  darklyFn()
   document.documentElement.classList.toggle('dark-theme')
 }
 
@@ -19,16 +21,16 @@ const handlePattern = () => {
   <header class="header">
     <Logo class="logo-svg" />
     <div class="button-wrap">
-      <Moon
-        @click="handlePattern"
-        class="moon"
-        v-show="pattern"
-      ></Moon>
       <Sun
         @click="handlePattern"
         class="sun"
-        v-show="!pattern"
+        v-if="isDarkly"
       ></Sun>
+      <Moon
+        @click="handlePattern"
+        class="moon"
+        v-else
+      ></Moon>
     </div>
   </header>
 </template>
@@ -50,24 +52,15 @@ const handlePattern = () => {
             justify-content: center;
             width: 80%;
             height: 100%;
-            // background-color: aquamarine;
             .moon{
+                width: 26px;
+                height: 26px;
+                cursor: pointer;
+            }
+            .sun{
                 width: 28px;
                 height: 28px;
                 cursor: pointer;
-                &:hover {
-                    transform: rotate(-1turn);
-                    transition: all 0.5s cubic-bezier(.34,0,.84,1);
-                }
-            }
-            .sun{
-                width: 46px;
-                height: 46px;
-                cursor: pointer;
-                 &:hover {
-                    transform: rotate(-1turn);
-                    transition: all 0.5s cubic-bezier(.34,0,.84,1);
-                }
             }
         }
     }

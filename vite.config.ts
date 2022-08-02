@@ -10,7 +10,9 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      reactivityTransform: true
+    }),
     viteStylelint({
       exclude: /windicss|node_modules|/
     }),
@@ -26,8 +28,8 @@ export default defineConfig({
   server: {
     open: true,
     hmr: {
-    // host:'127.0.0.1',
-    // port:8080
+      // host:'127.0.0.1',
+      // port:8080
       overlay: false
     }
     // 设置 https 代理
@@ -44,7 +46,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({
-          // 指定目标浏览器
+        // 指定目标浏览器
           overrideBrowserslist: ['Chrome > 40', 'ff > 31', 'ie 11']
         })
       ]
